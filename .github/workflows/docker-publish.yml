@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -18,7 +20,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@v2
       - name: Log into registry ${{ env.REGISTRY }}
